@@ -9,7 +9,7 @@ import Layout from './components/layouts/Default';
 import DashboardPage from './containers/Dashboard';
 
 // import ShowUserPage from './containers/users/Show';
-// import CreateUserPage from './containers/users/Create';
+import CreateUserPage from './containers/users/Create';
 // import UpdateUserPage from './containers/users/Update';
 
 const client = new AWSAppSyncClient({
@@ -19,17 +19,18 @@ const client = new AWSAppSyncClient({
     type: config.authenticationType,
     apiKey: config.apiKey,
   },
+  disableOffline: true,
 });
 
 const App = () => (
   <Router>
     <Layout>
       <Route exact path="/" component={DashboardPage} />
-      {/* <Switch>
+      <Switch>
         <Route path="/users/create" component={CreateUserPage} />
-        <Route path="/users/:id/edit" component={UpdateUserPage} />
-        <Route path="/users/:id" component={ShowUserPage} />
-      </Switch> */}
+        {/* <Route path="/users/:id/edit" component={UpdateUserPage} /> */}
+        {/* <Route path="/users/:id" component={ShowUserPage} /> */}
+      </Switch>
     </Layout>
   </Router>
 );
