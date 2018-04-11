@@ -10,9 +10,9 @@ export default gql`
   ) {
     updateUser(
       input: {
+        id: $id
         name: $name
         email: $email
-        password: $password
         phone: $phone
         address: $address
       }

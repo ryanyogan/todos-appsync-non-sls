@@ -8,9 +8,9 @@ import config from './global/config';
 import Layout from './components/layouts/Default';
 import DashboardPage from './containers/Dashboard';
 
-// import ShowUserPage from './containers/users/Show';
+import ShowUserPage from './containers/users/Show';
 import CreateUserPage from './containers/users/Create';
-// import UpdateUserPage from './containers/users/Update';
+import UpdateUserPage from './containers/users/Update';
 
 const client = new AWSAppSyncClient({
   url: config.graphqlEndpoint,
@@ -28,8 +28,8 @@ const App = () => (
       <Route exact path="/" component={DashboardPage} />
       <Switch>
         <Route path="/users/create" component={CreateUserPage} />
-        {/* <Route path="/users/:id/edit" component={UpdateUserPage} /> */}
-        {/* <Route path="/users/:id" component={ShowUserPage} /> */}
+        <Route path="/users/:id/edit" component={UpdateUserPage} />
+        <Route path="/users/:id" component={ShowUserPage} />
       </Switch>
     </Layout>
   </Router>

@@ -17,21 +17,21 @@ const CreateUserPage = props => (
 export default graphql(createUserMutation, {
   props: props => ({
     onSubmit: user => {
-      props
-        .mutate({
-          variables: user,
-          optimisticResponse: () => ({
-            createUser: {
-              __typename: 'User',
-              id: Math.random()
-                .toString(36)
-                .substring(7),
-              lists: [],
-              ...user,
-            },
-          }),
-        })
-        .then(() => props.ownProps.history.push('/'));
+      props.mutate({
+        variables: user,
+        optimisticResponse: () => ({
+          __typename: 'Mutation',
+          createUser: {
+            __typename: 'User',
+            id: Math.random()
+              .toString(36)
+              .substring(7),
+            lists: [],
+            ...user,
+          },
+        }),
+      });
+      props.ownProps.history.push('/');
     },
   }),
   options: {
